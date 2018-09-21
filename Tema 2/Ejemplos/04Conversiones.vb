@@ -21,7 +21,7 @@ Module Conversiones
         'Problema pérdida de precision
         Dim temperatura As Single = 17.8
         Dim t As Integer = Convert.ToInt32(temperatura)
-
+         Console.WriteLine(t)
         'Variables double y single
         Dim dato As Double = 34.67
         Dim dato2 As Single = Convert.ToSingle(dato)
@@ -34,7 +34,7 @@ Module Conversiones
 
 
 
-        Console.WriteLine(t)
+        
 
         Console.ReadLine()
 
