@@ -17,6 +17,9 @@ Module Module1
             Console.WriteLine("10. Calcular salario neto:")
             Console.WriteLine("12. Escoger color")
             Console.WriteLine("13. Resolver ecuación 2do grado")
+            Console.WriteLine("14. Año bisiesto")
+            Console.WriteLine("15. Ordenar de menor a mayor")
+            Console.WriteLine("16. Calcular precio productos")
             opcion = Convert.ToInt32(Console.ReadLine())
 
             Select Case opcion
@@ -209,7 +212,94 @@ Module Module1
                         Console.WriteLine("x1 = " & sol1)
                         Console.WriteLine("x2 = " & sol2)
                     End If
+                Case 14
+                    Dim anho As Integer
 
+                    anho = 2000
+
+                    If anho Mod 4 <> 0 Then
+                        Console.WriteLine("No es bisiesto")
+                    ElseIf anho Mod 100 <> 0 Then
+                        Console.WriteLine("Es bisiesto")
+                    ElseIf anho Mod 400 = 0 Then
+                        Console.WriteLine("Es bisiesto")
+                    Else
+                        Console.WriteLine("No bisiesto")
+
+                    End If
+
+                    If anho Mod 4 = 0 And anho Mod 100 = 0 And anho Mod 400 = 0 Then
+                        Console.WriteLine("Es bisiesto")
+                    ElseIf anho Mod 4 = 0 And anho Mod 100 <> 0 Then
+                        Console.WriteLine("Bisiesto")
+                    Else
+                        Console.WriteLine("No es bisiesto")
+                    End If
+
+
+                Case 15
+                    Dim n1, n2, n3 As Integer
+                    Dim menor, mediano, mayor As Integer
+                    n1 = 9
+                    n2 = 60
+                    n3 = 1
+
+                    If n1 < n2 And n1 < n3 Then
+                        menor = n1
+                        If n2 < n3 Then
+
+                            mediano = n2
+                            mayor = n3
+                        Else
+                            mediano = n3
+                            mayor = n2
+                        End If
+                    ElseIf n2 < n1 And n2 < n3 Then
+                        menor = n2
+                        If n3 < n1 Then
+                            mediano = n3
+                            mayor = n1
+                        Else
+                            mediano = n1
+                            mayor = n3
+                        End If
+                    Else
+                        menor = n3
+                        If n2 < n1 Then
+                            mediano = n2
+                            mayor = n1
+                        Else
+                            mediano = n1
+                            mayor = n2
+
+                        End If
+
+                    End If
+                    Console.WriteLine(menor & " " & mediano & " " & mayor)
+                Case 16
+                    Dim precio1, precio2, precio3, pTotal, pFinal As Double
+
+                    'Damos valores a los precios
+                    precio1 = 400
+                    precio2 = 90
+                    precio3 = 110
+
+                    pTotal = precio1 + precio2 + precio3
+
+                    If pTotal < 500 Then
+                        pFinal = pTotal
+                    ElseIf pTotal < 1000 Then
+                        pFinal = pTotal * 0.97
+                    ElseIf pTotal < 2000 Then
+                        pFinal = pTotal * 0.95
+                    ElseIf pTotal < 3000 Then
+                        pFinal = pTotal * 0.93
+                    Else
+                        pFinal = pTotal * 0.9
+
+                    End If
+                    Console.WriteLine("EL precio total es: " & pTotal)
+                    Console.WriteLine("El precio final con descuento : " & pFinal)
 
                 Case Else
                     Console.Clear()
