@@ -16,6 +16,7 @@ Module Module1
             Console.WriteLine("1. Ejercicio 1")
             Console.WriteLine("5. Ejercicio 5")
             Console.WriteLine("7. Ejercicio 7")
+            Console.WriteLine("12 o 13. Numero perfecro")
             ejercicio = Convert.ToInt32(Console.ReadLine())
             Console.Clear()
             Select Case ejercicio
@@ -116,6 +117,39 @@ Module Module1
                         End While
                         Console.WriteLine("La suma es : " & suma)
                     End If
+
+                Case 12, 13
+                    Dim numero As Integer
+                    Dim suma As Integer = 0
+
+                    Dim i As Integer = 1
+                    Console.WriteLine("Introduce un número")
+                    numero = Convert.ToInt32(Console.ReadLine())
+
+                    While i <= numero / 2
+                        If numero Mod i = 0 Then
+                            suma = suma + i
+                        End If
+                        i += 1
+                    End While
+
+                    Console.WriteLine("12. La suma es : " & suma)
+                    'Ejercicio 13: Un numero es perfecto si es igual
+                    'a la suma de sus divisores sin contar el propio numero
+                    If numero = suma Then
+                        Console.WriteLine("Es perfecto")
+                    Else
+                        Console.WriteLine("No es perfecto")
+                    End If
+                Case 18
+                    'Detectar si un número es primo
+                    'Es primo si solo es divisible entre 1 y el propio numero
+                    Dim numero As Integer
+                    Console.WriteLine("Intro un numero")
+                    numero = Convert.ToInt32(Console.ReadLine())
+
+
+
 
             End Select
 
