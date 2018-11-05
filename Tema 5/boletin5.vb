@@ -17,6 +17,8 @@ Module Module1
             Console.WriteLine("5. Ejercicio 5")
             Console.WriteLine("7. Ejercicio 7")
             Console.WriteLine("12 o 13. Numero perfecro")
+            Console.WriteLine("18. Detectar numero primo")
+            Console.WriteLine("22. Bucles anidados")
             ejercicio = Convert.ToInt32(Console.ReadLine())
             Console.Clear()
             Select Case ejercicio
@@ -144,11 +146,103 @@ Module Module1
                 Case 18
                     'Detectar si un número es primo
                     'Es primo si solo es divisible entre 1 y el propio numero
-                    Dim numero As Integer
-                    Console.WriteLine("Intro un numero")
-                    numero = Convert.ToInt32(Console.ReadLine())
+                    Dim numero As Integer = 0
+                    Dim contadorLectura As Integer = 0
+                    Do
+                        Console.WriteLine("Intro un numero")
+                        numero = Convert.ToInt32(Console.ReadLine())
+                        contadorLectura += 1
+                    Loop While numero < 0 And contadorLectura < 3
+
+                    If contadorLectura = 3 Then
+                        Console.WriteLine("Se te acabaron las vidas")
+                    Else
+                        Dim primo As Boolean = True
+                        Dim contador As Integer = 0
+                        For i As Integer = 2 To Convert.ToInt32(numero / 2) Step 1
+                            If numero Mod i = 0 Then
+
+                                primo = False
+                                Exit For
+
+                            End If
+                        Next
+
+                        If primo = True Then
+                            Console.WriteLine("Numero primo")
+                        Else
+                            Console.WriteLine("Numero no primo")
+                        End If
+                    End If
 
 
+                    '30 de octubre de 2018 a las 13:55
+                    'Los alumnos de 1º de GMI se compromenten a no 
+                    'escribir un else dentro de un for en aquellos algoritmos
+                    'que impliquen búsquedas de cualquier tipo lease , divisores
+                    'ocurrencias en una matriz etc...
+
+                Case 22
+                    Console.WriteLine("Apartado a)")
+                    Dim contador As Integer = 6
+                    For i As Integer = 6 To 0 Step -1
+
+                        For j As Integer = 0 To i Step 1
+                            Console.Write("*")
+                        Next
+
+                        Console.WriteLine()
+
+                    Next
+
+                    Console.WriteLine("Apartado b)")
+
+                    For i As Integer = 0 To 6 Step 1
+
+                        For j As Integer = 0 To i Step 1
+                            Console.Write("*")
+                        Next
+
+                        Console.WriteLine()
+
+                    Next
+
+                    Console.WriteLine("Apartado c)")
+
+                    For i As Integer = 0 To 6 Step 1
+
+                        For j As Integer = 0 To i Step 1
+                            Console.Write("*")
+                        Next
+
+                        Console.WriteLine()
+
+                    Next
+
+                    For i As Integer = 5 To 0 Step -1
+
+                        For j As Integer = 0 To i Step 1
+                            Console.Write("*")
+                        Next
+
+                        Console.WriteLine()
+
+                    Next
+
+                    Console.WriteLine("Apartado D")
+                    Dim k, z As Integer
+
+                    k = 7
+                    z = 1
+                    While k > 0
+                        z = 1
+                        While z <= k
+                            Console.Write(z & " ")
+                            z += 1
+                        End While
+                        k -= 1
+                        Console.WriteLine()
+                    End While
 
 
             End Select
