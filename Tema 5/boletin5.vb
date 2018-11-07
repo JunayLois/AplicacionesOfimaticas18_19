@@ -19,6 +19,7 @@ Module Module1
             Console.WriteLine("12 o 13. Numero perfecro")
             Console.WriteLine("18. Detectar numero primo")
             Console.WriteLine("22. Bucles anidados")
+            Console.WriteLine("24. Detector números primos or debajo de n")
             ejercicio = Convert.ToInt32(Console.ReadLine())
             Console.Clear()
             Select Case ejercicio
@@ -243,6 +244,52 @@ Module Module1
                         k -= 1
                         Console.WriteLine()
                     End While
+                Case 23
+                    Dim numero As Integer = 10000000
+                    'Perfecto = suma de sus divisores menos el propio numero
+                    Dim suma As Integer = 0
+
+                    For i As Integer = 4 To numero Step 1
+                        suma = 0
+                        For j As Integer = 1 To Convert.ToInt32(i / 2) Step 1
+                            If i Mod j = 0 Then
+                                suma = suma + j
+                            End If
+                        Next
+
+                        If suma = i Then
+                            Console.WriteLine(i & " es perfecto.")
+                        End If
+
+
+                    Next
+
+
+
+
+
+
+
+                Case 24
+                    Dim numero As Long
+                    Console.WriteLine("Introduce numero : ")
+                    numero = Convert.ToInt64(Console.ReadLine())
+
+                    Dim contador As Long = 0
+                    For j As Long = 3 To numero Step 1
+                        contador = 0
+                        For i As Long = 2 To j - 1 Step 1
+                            If j Mod i = 0 Then
+                                contador += 1
+                                Exit For
+                            End If
+                        Next
+
+                        If contador = 0 Then
+                            Console.WriteLine(j & " es primo")
+                        End If
+                    Next
+
 
 
             End Select
@@ -251,7 +298,7 @@ Module Module1
             Console.ReadLine()
             Console.Clear()
 
-        Loop While ejercicio < 20
+        Loop While ejercicio < 25
 
 
 
