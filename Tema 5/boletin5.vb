@@ -125,10 +125,11 @@ Module Module1
                     Dim numero As Integer
                     Dim suma As Integer = 0
 
-                    Dim i As Integer = 1
+                    Dim i As Integer
                     Console.WriteLine("Introduce un número")
                     numero = Convert.ToInt32(Console.ReadLine())
 
+                    Console.WriteLine()
                     While i <= numero / 2
                         If numero Mod i = 0 Then
                             suma = suma + i
@@ -245,7 +246,7 @@ Module Module1
                         Console.WriteLine()
                     End While
                 Case 23
-                    Dim numero As Integer = 10000000
+                    Dim numero As Integer = 10000
                     'Perfecto = suma de sus divisores menos el propio numero
                     Dim suma As Integer = 0
 
@@ -290,22 +291,41 @@ Module Module1
                         End If
                     Next
 
+                Case 25
+                    Dim aleatorio As Random = New Random()
+                    Dim contadorPositivos As Integer = 0
+                    Dim contadorNegativos As Integer = 0
+                    Dim porcentajePositivos As Double = 0
+                    Dim porcentajeNegativos As Double = 0
+                    'contadorNegativos = 0
+                    'contadorPositivos = 0
+                    'porcentajeNegativos = 0
+                    'porcentajePositivos = 0
+                    For j As Integer = 0 To 9 Step 1
+                        For i As Integer = 0 To 8 Step 1
+                            Dim numero As Integer = aleatorio.Next(-5, 6)
+                            Console.Write(numero & " ")
+                            If numero >= 0 Then
+                                contadorPositivos += 1
+                            Else
+                                contadorNegativos += 1
+                            End If
+                        Next
+                        Console.WriteLine()
+                    Next
 
+                    porcentajeNegativos = (contadorNegativos / 90) * 100
+                    porcentajePositivos = (contadorPositivos / 90) * 100
 
+                    Console.WriteLine("Hay " & contadorPositivos & " numeros positivo , que es un " & porcentajePositivos & "%")
+                    Console.WriteLine("Hay " & contadorNegativos & " numeros negativos , que es un " & porcentajeNegativos & "%")
             End Select
 
             'Código copyright by Cousiño & Davila 
             Console.ReadLine()
             Console.Clear()
 
-        Loop While ejercicio < 25
-
-
-
-
-
-
-
+        Loop While ejercicio < 26
 
 
     End Sub
