@@ -297,6 +297,18 @@ Module Module1
                     Dim contadorNegativos As Integer = 0
                     Dim porcentajePositivos As Double = 0
                     Dim porcentajeNegativos As Double = 0
+                    Dim c1 As Integer = 0
+                    Dim c2 As Integer = 0
+                    Dim c3 As Integer = 0
+                    Dim c4 As Integer = 0
+                    Dim c5 As Integer = 0
+                    Dim c_1 As Integer = 0
+                    Dim c_2 As Integer = 0
+                    Dim c_3 As Integer = 0
+                    Dim c_4 As Integer = 0
+                    Dim c_5 As Integer = 0
+                    Dim c0 As Integer = 0
+
                     'contadorNegativos = 0
                     'contadorPositivos = 0
                     'porcentajeNegativos = 0
@@ -310,6 +322,33 @@ Module Module1
                             Else
                                 contadorNegativos += 1
                             End If
+
+                            Select Case numero
+                                Case 0
+                                    c0 += 1
+                                Case 1
+                                    c1 += 1
+                                Case 2
+                                    c2 += 1
+                                Case 3
+                                    c3 += 1
+                                Case 4
+                                    c4 += 1
+                                Case 5
+                                    c5 += 1
+                                Case -1
+                                    c_1 += 1
+                                Case -2
+                                    c_2 += 1
+                                Case -3
+                                    c_3 += 1
+                                Case -4
+                                    c_4 += 1
+                                Case -5
+                                    c_5 += 1
+
+                            End Select
+
                         Next
                         Console.WriteLine()
                     Next
@@ -319,6 +358,51 @@ Module Module1
 
                     Console.WriteLine("Hay " & contadorPositivos & " numeros positivo , que es un " & porcentajePositivos & "%")
                     Console.WriteLine("Hay " & contadorNegativos & " numeros negativos , que es un " & porcentajeNegativos & "%")
+
+                    Dim moda As Integer = 0
+
+                    'Copyright Santomé & Cousiño
+                    Dim maximo As Integer = Math.Max(c1, Math.Max(c2, Math.Max(c3, Math.Max(c4, Math.Max(c5, Math.Max(c0, Math.Max(c_1, Math.Max(c_2, Math.Max(c_3, Math.Max(c_4, c_5))))))))))
+
+                    If (maximo = c0) Then
+                        moda = 0
+                    ElseIf maximo = c1 Then
+                        moda = 1
+                    ElseIf maximo = c2 Then
+                        moda = 2
+                    ElseIf maximo = c3 Then
+                        moda = 3
+                    ElseIf maximo = c4 Then
+                        moda = 4
+                    ElseIf maximo = c5 Then
+                        moda = 5
+                    ElseIf maximo = c_1 Then
+                        moda = -1
+                    ElseIf maximo = c_2 Then
+                        moda = -2
+                    ElseIf maximo = c_3 Then
+                        moda = -3
+                    ElseIf maximo = c_4 Then
+                        moda = -4
+                    Else
+                        moda = -5
+
+                    End If
+                    Console.WriteLine("El 1 aparece " & c1 & " veces")
+                    Console.WriteLine("El 2 aparece " & c2 & " veces")
+                    Console.WriteLine("El 3 aparece " & c3 & " veces")
+                    Console.WriteLine("El 4 aparece " & c4 & " veces")
+                    Console.WriteLine("El 5 aparece " & c5 & " veces")
+                    Console.WriteLine("El 0 aparece " & c0 & " veces")
+                    Console.WriteLine("El -1 aparece " & c_1 & " veces")
+                    Console.WriteLine("El -2 aparece " & c_2 & " veces")
+                    Console.WriteLine("El -3 aparece " & c_3 & " veces")
+                    Console.WriteLine("El -4 aparece " & c_4 & " veces")
+                    Console.WriteLine("El -5 aparece " & c_5 & " veces")
+                    Console.WriteLine("El valor más repetido es " & moda)
+
+
+
             End Select
 
             'Código copyright by Cousiño & Davila 
