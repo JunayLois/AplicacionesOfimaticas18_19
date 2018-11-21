@@ -180,7 +180,7 @@ Module Module1
 
                     '30 de octubre de 2018 a las 13:55
                     'Los alumnos de 1º de GMI se compromenten a no 
-                    'escribir un else dentro de un for en aquellos algoritmos
+                    'escribir un else dentro de un bucle en aquellos algoritmos
                     'que impliquen búsquedas de cualquier tipo lease , divisores
                     'ocurrencias en una matriz etc...
 
