@@ -7,6 +7,7 @@ Module Module1
         Do
             Console.Clear()
             Console.WriteLine("1. Ejercicio1")
+            Console.WriteLine("4. Ejercicio4: Simétrica")
             ejercicio = Convert.ToInt32(Console.ReadLine())
             Select Case ejercicio
                 Case 1
@@ -51,36 +52,57 @@ Module Module1
 
                     Console.ReadLine()
                 Case 2
-                Case Else
-                    'Extra : Comprobar que una matriz es cuadrada y mostrar
-                    'elementos diagonal principal
-                    Dim m(4, 4) As Integer
-                    Dim aleatorio As Random = New Random()
+                Case 3
+                Case 4
+                    Dim matriz(,) As Integer = {{1, 6, 1}, {0, 1, 0}, {1, 0, 1}}
+                    Dim traspuesta(matriz.GetUpperBound(0), matriz.GetUpperBound(1)) As Integer
 
-                    For i As Integer = 0 To m.GetUpperBound(0) Step 1
-                        For j As Integer = 0 To m.GetUpperBound(1) Step 1
-                            m(i, j) = aleatorio.Next(1, 10)
+                    For i As Integer = 0 To matriz.GetUpperBound(0) Step 1
+                        For j As Integer = 0 To matriz.GetUpperBound(1) Step 1
+                            traspuesta(i, j) = matriz(j, i)
+                        Next j
+                    Next i
+
+                    Console.WriteLine("Matriz original")
+                    For i As Integer = 0 To matriz.GetUpperBound(0) Step 1
+                        For j As Integer = 0 To matriz.GetUpperBound(1) Step 1
+                            Console.Write(matriz(i, j) & " ")
+                        Next j
+                        Console.WriteLine()
+                    Next i
+
+                    Console.WriteLine("Matriz traspuesta")
+                    For i As Integer = 0 To traspuesta.GetUpperBound(0) Step 1
+                        For j As Integer = 0 To traspuesta.GetUpperBound(1) Step 1
+                            Console.Write(traspuesta(i, j) & " ")
+                        Next j
+                        Console.WriteLine()
+                    Next i
+
+                    'Comprobar si es simétrica
+                    Dim simetrica As Boolean = True
+
+                    'Son simétricas: Si original es igual a la traspues
+                    For i As Integer = 0 To matriz.GetUpperBound(0) Step 1
+                        For j As Integer = 0 To matriz.GetUpperBound(1) Step 1
+                            If matriz(i, j) <> traspuesta(i, j) Then
+                                simetrica = False
+                                Exit For
+                            End If
                         Next
+                        If Not simetrica Then
+                            Console.WriteLine("No simétrica")
+                            Exit For
+                        End If
                     Next
 
 
-                    If m.GetUpperBound(0) = m.GetUpperBound(1) Then
-                        For i As Integer = 0 To m.GetUpperBound(0) Step 1
-                            For j As Integer = 0 To m.GetUpperBound(1) Step 1
-                                If i = j Then
-                                    Console.ForegroundColor = ConsoleColor.Yellow
-                                    Console.Write(m(i, j) & " ")
-                                Else
-                                    Console.ForegroundColor = ConsoleColor.Green
-                                    Console.Write(m(i, j) & " ")
-                                End If
-                            Next
-                            Console.WriteLine()
-                        Next
-                    End If
+                    Console.WriteLine("Matriz simétrica")
+
+
             End Select
 
-
+            Console.ReadLine()
 
         Loop While ejercicio < 10
 
