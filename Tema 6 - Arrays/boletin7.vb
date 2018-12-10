@@ -96,15 +96,141 @@ Module Module1
                         End If
                     Next
 
+                    If simetrica Then
+                        Console.WriteLine("Matriz simétrica")
+                    End If
 
-                    Console.WriteLine("Matriz simétrica")
+                Case 6
+                    Dim m(,) As Integer = {{1, 2, 3}, {8, 9, 0}, {2, 3, 1}, {9, 0, 8}}
+                    Dim sumaUltimaColumna As Integer
+
+                    'Mostrar la matriz
+                    For i As Integer = 0 To m.GetUpperBound(0) Step 1
+                        For j As Integer = 0 To m.GetUpperBound(1) Step 1
+                            Console.Write(m(i, j) & " ")
+                        Next
+                        Console.WriteLine()
+                    Next
+
+                    For i As Integer = 0 To m.GetUpperBound(0) Step 1
+                        sumaUltimaColumna += m(i, m.GetUpperBound(1))
+                    Next
+
+                    Console.WriteLine("La suma de la última columna : " & sumaUltimaColumna)
+
+                Case 7
+                    Dim m(,) As Integer = {{1, 2, 3, 4, 5}, {9, 8, 7, 6, 3}}
+                    Dim max, min, suma, posIMax, posJMax As Integer
+                    Dim media, desviacionMax, desviacionMin As Double
+                    max = m(0, 0)
+                    min = m(0, 0)
+
+                    For i As Integer = 0 To m.GetUpperBound(0) Step 1
+                        For j As Integer = 0 To m.GetUpperBound(1) Step 1
+                            If max < m(i, j) Then
+                                max = m(i, j)
+                                posIMax = i
+                                posJMax = j
+                            End If
+                        Next
+                    Next
+
+
+
+                    For Each valor As Integer In m
+                        If min > valor Then
+                            min = valor
+                        End If
+                    Next
+
+                    'Calcular la media
+                    For Each valor As Integer In m
+                        suma += valor
+                    Next
+
+                    media = suma / m.Length
+
+                    desviacionMax = Math.Abs(max - media)
+                    desviacionMin = Math.Abs(min - media)
+
+                    Console.WriteLine("Mínimo : " & min)
+                    Console.WriteLine("Máximo : " & max & " Posición : " & posIMax & "," & posJMax)
+                    Console.WriteLine("Media : " & media)
+                    Console.WriteLine("Desviación máximo : " & desviacionMax)
+                    Console.WriteLine("Desviación minimo : " & desviacionMin)
+
+                Case 8
+                    Dim m(,) As Integer = {{0, 0, 1}, {0, 0, 0}, {0, 0, 0}}
+                    Dim contador As Integer = 0
+
+                    'Detectar filas con solo ceros
+                    For i As Integer = 0 To m.GetUpperBound(0) Step 1
+                        contador = 0
+                        For j As Integer = 0 To m.GetUpperBound(1) Step 1
+                            If m(i, j) = 0 Then
+                                contador += 1
+                            End If
+                        Next
+                        If contador = 3 Then
+                            Console.WriteLine("Rango 2 o 1")
+                            Console.WriteLine("Fila con todo ceros")
+                            Exit For
+                        End If
+                    Next
+
+                Case 9
+                    Dim m1(,) As Integer = {{1, 2, 3}, {4, 5, 6}, {4, 2, 1}}
+                    Dim m2(,) As Integer = {{2, 3, 4}, {1, 1, 1}, {5, 9, 9}}
+                    Dim suma(m1.GetUpperBound(0), m1.GetUpperBound(1)) As Integer
+                    ' Dim suma2(m1.GetLength(0) - 1, m2.GetLength(1) - 1) As Integer
+
+                    For i As Integer = 0 To m1.GetUpperBound(0) Step 1
+                        For j As Integer = 0 To m1.GetUpperBound(1) Step 1
+                            suma(i, j) = m1(i, j) + m2(i, j)
+                        Next
+                    Next
+
+                    For i As Integer = 0 To m1.GetUpperBound(0) Step 1
+                        For j As Integer = 0 To m1.GetUpperBound(1) Step 1
+                            Console.WriteLine(suma(i, j) & " ")
+                        Next
+                        Console.WriteLine()
+                    Next
+
+                Case 12
+                    Dim m(,) As Integer = {{1, 0, 0, 0}, {2, 3, 6, 0}, {1, 3, 4, 0}, {1, 1, 1, 1}}
+
+                    Dim tInferior As Boolean = True
+                    Dim tSuperiro As Boolean = True
+
+                    For i As Integer = 0 To m.GetUpperBound(0) Step 1
+                        For j As Integer = 0 To m.GetUpperBound(1) Step 1
+                            If j > i Then
+                                If m(i, j) <> 0 Then
+                                    tInferior = False
+                                    Exit For
+                                End If
+                            End If
+                        Next
+                        If tInferior = False Then
+                            Exit For
+                        End If
+                    Next
+
+                    If tInferior Then
+                        Console.WriteLine("Triangular inferior")
+                    Else
+                        Console.WriteLine("No es triangular inferior")
+                    End If
+
+
 
 
             End Select
 
             Console.ReadLine()
 
-        Loop While ejercicio < 10
+        Loop While ejercicio < 15
 
 
         Console.ReadLine()
