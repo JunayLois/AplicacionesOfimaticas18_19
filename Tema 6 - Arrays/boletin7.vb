@@ -173,16 +173,22 @@ Module Module1
                         Next
                         If contador = 3 Then
                             Console.WriteLine("Rango 2 o 1")
-                            Console.WriteLine("Fila con todo ceros")
+                            Console.WriteLine("Fila " & i & " con todo ceros")
                             Exit For
                         End If
                     Next
+                    'Todo Crear variable de no se que
 
                 Case 9
+#Region "variables matrices"
                     Dim m1(,) As Integer = {{1, 2, 3}, {4, 5, 6}, {4, 2, 1}}
+#Region "matriz2"
                     Dim m2(,) As Integer = {{2, 3, 4}, {1, 1, 1}, {5, 9, 9}}
+#End Region
+
                     Dim suma(m1.GetUpperBound(0), m1.GetUpperBound(1)) As Integer
                     ' Dim suma2(m1.GetLength(0) - 1, m2.GetLength(1) - 1) As Integer
+#End Region
 
                     For i As Integer = 0 To m1.GetUpperBound(0) Step 1
                         For j As Integer = 0 To m1.GetUpperBound(1) Step 1
@@ -196,6 +202,11 @@ Module Module1
                         Next
                         Console.WriteLine()
                     Next
+                Case 10
+
+
+                Case 11
+
 
                 Case 12
                     Dim m(,) As Integer = {{1, 0, 0, 0}, {2, 3, 6, 0}, {1, 3, 4, 0}, {1, 1, 1, 1}}
@@ -223,7 +234,23 @@ Module Module1
                         Console.WriteLine("No es triangular inferior")
                     End If
 
+                Case 13
+                    Dim m(,) As Integer = {{1, 2, 3}, {4, 5, 6}, {9, 0, 1}}
 
+                    If m.GetUpperBound(0) = m.GetUpperBound(1) Then
+                        For i As Integer = 0 To m.GetUpperBound(0) Step 1
+                            For j As Integer = 0 To m.GetUpperBound(1) Step 1
+                                If i = j Then
+                                    Console.ForegroundColor = ConsoleColor.Red
+                                    Console.Write(m(i, j) & " ")
+                                Else
+                                    Console.Write("  ")
+                                End If
+
+                            Next
+                            Console.WriteLine()
+                        Next
+                    End If
 
 
             End Select
