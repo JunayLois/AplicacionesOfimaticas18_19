@@ -27,7 +27,14 @@
 
         Return contador
     End Function
-
+    'Función ejercicio 4
+    Function BuscarArroba(ByRef cadena As String) As Boolean
+        '  Dim encontrado As Boolean = False
+        If cadena.Contains("@") Then
+            Return True
+        End If
+        Return False
+    End Function
 
     'Función ejercicio 5
     Function ContarAbas(ByRef cadena As String) As Integer
@@ -73,11 +80,44 @@
     End Function
 
 
+    'funcion ejercicio 6
 
+    Function GetDominio(ByRef cadena As String) As String
+        'Forma 1
+        'Dim trozos() As String = cadena.Split("@"c, "."c)
+        'Dim dominio As String = Nothing
+        'If trozos.Length >= 2 Then
+        '    dominio = trozos(1)
+        'End If
+        'Return dominio
 
+        'Forma 2
+        Dim posArroba As Integer = cadena.IndexOf("@"c)
+        Dim posPunto As Integer = cadena.LastIndexOf("."c)
+        Dim dominio As String = Nothing
+        If posArroba >= 1 And posPunto >= posArroba Then
+            dominio = cadena.Substring(posArroba + 1, posPunto - posArroba - 1)
+        End If
+        Return dominio
+    End Function
 
+    'Función ejercicio 7
 
+    Function VerificarAA99(ByRef cadena As String) As Boolean
+        Dim correcto As Boolean = True
+        If Not Char.IsLetter(cadena(0)) Or Not Char.IsLetter(cadena(1)) Or
+                Not Char.IsDigit(cadena(2)) Or Not Char.IsDigit(cadena(3)) Then
+            correcto = False
+        End If
+        Return correcto
+    End Function
 
+    'Function ejercicio 8
+
+    Function Reemplazar(ByRef cadena As String) As String
+        Dim cadenaCopia As String = cadena.Replace(" ", "*")
+        Return cadenaCopia
+    End Function
 
 
 

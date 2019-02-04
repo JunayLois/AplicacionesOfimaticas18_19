@@ -1,6 +1,7 @@
 ﻿
 Option Strict On
 Imports System.Text.RegularExpressions
+Imports System.IO
 
 Module Module1
 
@@ -96,20 +97,96 @@ Module Module1
                         End If
                     Next
 
-
-
-
-
-
-
-
                 Case 4
+                    Dim email As String = "prueba@ciclos.com"
+
+                    If BuscarArroba(email) Then
+                        Console.WriteLine("Tiene una arroba")
+                    Else
+                        Console.WriteLine("No tiene una arroba")
+                    End If
+
                 Case 5
                     Dim coincidencas As List(Of String) = Buscador("Buscando a Nemo y buscando a Dory oryhuela orygami", "ory")
 
                     For i As Integer = 0 To coincidencas.Count() - 1 Step 1
                         Console.WriteLine(coincidencas(i))
                     Next
+
+                    Dim contador As Integer = ContarAbas("Estaba estudiando y cantaba de contento")
+
+                    Dim cadena As String = "Estoy aprendiendo un monton"
+                    cadena = cadena.Replace("o", "e")
+
+                Case 6
+                    Dim correo As String = "prueba@gmail.com"
+                    Dim dominio As String = GetDominio(correo)
+                    If dominio IsNot Nothing Then
+                        Console.WriteLine("Dominio : " & dominio)
+                    Else
+                        Console.WriteLine("Error en la direccion")
+                    End If
+
+                Case 7
+                    Dim codigo As String = "WE34"
+                    If VerificarAA99(codigo) Then
+                        Console.WriteLine("Código correcto")
+                    Else
+                        Console.WriteLine("Código erróneo")
+                    End If
+
+                Case 8
+                    Dim cadena As String = "Pedro 34567889R Calle Del Olvido 19"
+                    Console.WriteLine(Reemplazar(cadena))
+                    Console.WriteLine(cadena)
+                Case 9
+                    Dim casoA As String = "Pedro Jimenez*14Julio1990?250"
+
+                    'Aqui el salario está después del ?
+                    Dim salario As String = casoA.Substring(casoA.IndexOf("?"c) + 1)
+                    'Para comprobar que es > 1000 hayq eu convertir a Integer
+                    Dim salarioNumerico As Integer = Convert.ToInt32(salario)
+                    If salarioNumerico > 1000 Then
+                        Console.WriteLine("Superior a 1000")
+                    Else
+                        Console.WriteLine("Inferior a 1000")
+                    End If
+
+
+                    Dim casoB As String = "Maria Benitez*900!06Agosto1998"
+
+                    'Aqui el salario esta entre * y !
+
+                    Dim salario2 As String = casoB.Split("*"c, "!"c)(1)
+
+                    Dim salario2Numerico As Integer = Convert.ToInt32(salario2)
+
+                    If salario2Numerico > 1000 Then
+                        Console.WriteLine("Mayor que 1000")
+                    Else
+                        Console.WriteLine("Menor que 1000")
+                    End If
+
+                Case 14
+                    Dim ruta1 As String = Directory.GetCurrentDirectory() + "/fichero1.txt"
+                    Dim nombre1 As String = ruta1.Substring(ruta1.LastIndexOf("/") + 1)
+                    Dim ruta2 As String = Directory.GetCurrentDirectory() + "/fichero2.txt"
+                    Dim nombre2 As String = ruta2.Substring(ruta2.LastIndexOf("/") + 1)
+
+                    Dim lector As StreamReader = My.Computer.FileSystem.OpenTextFileReader(ruta1)
+                    Dim lector2 As StreamReader = My.Computer.FileSystem.OpenTextFileReader(ruta2)
+
+                    Dim contenido1 As String = lector.ReadToEnd()
+                    lector.Close()
+
+                    Dim contenido2 As String = lector2.ReadToEnd()
+                    lector.Close()
+
+                    Dim contenidoTotal As String = contenido1 + vbNewLine + contenido2
+
+                    Dim escritor As StreamWriter = My.Computer.FileSystem.OpenTextFileWriter(Directory.GetCurrentDirectory() + "/" + nombre1 + "_" + nombre2, False)
+                    escritor.WriteLine(contenidoTotal)
+                    escritor.Close()
 
 
 
